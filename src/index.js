@@ -10,9 +10,29 @@ import { Provider } from "react-redux";
 import logger from "redux-logger";
 
 // ⬇ The Reducers
+const feedBackForm = (state = [], action) => {
+  switch (action.type) {
+    case "ADD_FEELING":
+      return [...state, action.payload];
+    case "ADD_UNDERSTANDING":
+      return [...state, action.payload];
+    case "ADD_SUPPORT":
+      return [...state, action.payload];
+    case "ADD_COMMENTS":
+      return [...state, action.payload];
 
+    default:
+      return state;
+  }
+};
 // ⬇ Creating our store
-const store = createStore(applyMiddleware(logger))
+const store = createStore(
+  // ⬇ Reducers go here
+  combineReducers({
+    feedBackForm,
+  }),
+  applyMiddleware(logger)
+);
 
 ReactDOM.render(
   <Provider store={store}>
