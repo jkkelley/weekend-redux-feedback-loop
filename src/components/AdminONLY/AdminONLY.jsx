@@ -1,8 +1,10 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
 import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
+import AdminLogin from "../AdminLogin/AdminLogin";
 
 // Material-ui imports
 import { makeStyles } from "@material-ui/core/styles";
@@ -27,9 +29,12 @@ const useStyles = makeStyles((theme) => ({
 
 function AdminOnly() {
   const classes = useStyles();
+  const passCheck = useSelector((store) => store.passCheck);
 
   // Create login to display feedback Results
   const history = useHistory();
+  const [checkin, setCheckin] = useState(passCheck);
+  console.log(checkin);
   const [results, setResults] = useState([]);
   // need an axios GET promise
   const pastFeedbackResults = () => {
@@ -47,7 +52,6 @@ function AdminOnly() {
         console.log(`Seems like the server had an ${error}`);
       });
   };
- 
 
   const goHome = () => {
     history.push("/");
@@ -60,6 +64,7 @@ function AdminOnly() {
   return (
     <>
       <h2>Feedback Results!</h2>
+      <AdminLogin />
       <Button
         className={classes.button}
         color="primary"

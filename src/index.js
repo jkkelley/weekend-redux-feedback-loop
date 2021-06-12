@@ -29,11 +29,28 @@ const feedBackForm = (state = [], action) => {
       return state;
   }
 };
+
+const passCheck = (state = [], action) => {
+  switch (action.type) {
+    case "CHECK_THIS":
+      const login = "Admin"
+      const pass = "Qwery123"
+
+      if(action.payload.login === login && action.payload.pass === pass){
+        return true
+      } else {
+        return false
+      }
+    default:
+      return state;
+  }
+};
 // ⬇ Creating our store
 const store = createStore(
   // ⬇ Reducers go here
   combineReducers({
     feedBackForm,
+    passCheck,
   }),
   applyMiddleware(logger)
 );
