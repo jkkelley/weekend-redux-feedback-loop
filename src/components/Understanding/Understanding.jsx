@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import "./Understanding.css";
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -12,11 +12,10 @@ import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import Select from "@material-ui/core/Select";
 
-
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 140,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -24,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Understanding() {
-  const feedBackForm = useSelector(store => store.feedBackForm)
+  const feedBackForm = useSelector((store) => store.feedBackForm);
   // console.log(feedBackForm[0].id)
   const classes = useStyles();
   // Need to hold our input locally in a state so we
@@ -51,7 +50,7 @@ function Understanding() {
     } else {
       dispatch({
         type: "ADD_UNDERSTANDING",
-        payload: {understanding: understandingInput, id: 2}
+        payload: { understanding: understandingInput, id: 2 },
       });
       history.push("/support");
     }
@@ -59,8 +58,8 @@ function Understanding() {
 
   const handleBack = (event) => {
     console.log("you clicked handleBack");
-    dispatch({type: "GO_BACK", payload: feedBackForm[0] })
-    history.push("/")
+    dispatch({ type: "GO_BACK", payload: feedBackForm[0] });
+    history.push("/");
   };
   return (
     <>

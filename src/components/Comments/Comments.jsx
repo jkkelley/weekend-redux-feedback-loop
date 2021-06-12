@@ -1,7 +1,7 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-
+import "./Comments.css"
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
@@ -11,7 +11,7 @@ import TextField from "@material-ui/core/TextField";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 120,
+    minWidth: 1,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -19,7 +19,8 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "25ch",
+      width: "ch",
+      
     },
   },
 }));
@@ -62,7 +63,7 @@ function Comments() {
     history.push("/support");
   };
   return (
-    <>
+    <div className="form-container">
       <form className={classes.root} noValidate autoComplete="off">
         <TextField
           required
@@ -73,7 +74,7 @@ function Comments() {
         <NavigateBeforeIcon onClick={handleBack} />
         <NavigateNextIcon onClick={handleSubmit} />
       </form>
-    </>
+    </div>
   );
 }
 
