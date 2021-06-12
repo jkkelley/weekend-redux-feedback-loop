@@ -1,11 +1,11 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
-
+import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
 // Material-ui imports
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import FlagIcon from "@material-ui/icons/Flag";
-import FlagOutlinedIcon from '@material-ui/icons/FlagOutlined';
+import FlagOutlinedIcon from "@material-ui/icons/FlagOutlined";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -15,6 +15,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 function AdminOnly() {
+  // Create login to display feedback Results
   const history = useHistory();
   const [results, setResults] = useState([]);
   // need an axios GET promise
@@ -23,6 +24,10 @@ function AdminOnly() {
       .get("/feedback")
       .then((response) => {
         console.log(response.data);
+        // for (let flags of response.data) {
+        //   setFlagged(flags.flagged);
+        // }
+        // setFlagged(response.data[0].flagged);
         setResults(response.data);
       })
       .catch((error) => {
@@ -38,16 +43,18 @@ function AdminOnly() {
       .then((response) => {
         console.log(`The Server says... ${response.data}`);
         // Redraw the table
-        pastFeedbackResults();
+        // pastFeedbackResults();
       })
       .catch((error) => {
         console.log(`Sorry, couldn't handle the delete request: ${error}`);
       });
   };
+
   // display GET to table
   useEffect(() => {
     pastFeedbackResults();
   }, []);
+
   return (
     <>
       <h2>Feedback Results!</h2>
@@ -66,16 +73,11 @@ function AdminOnly() {
             </TableHead>
             <TableBody>
               {results.map((feedback, i) => (
-                <TableRow key={i}>
-                  <TableCell><FlagIcon /><FlagOutlinedIcon /></TableCell>
-                  <TableCell>{feedback.feeling}</TableCell>
-                  <TableCell>{feedback.understanding}</TableCell>
-                  <TableCell>{feedback.support}</TableCell>
-                  <TableCell>{feedback.comments}</TableCell>
-                  <TableCell>
-                    <DeleteForeverIcon onClick={() => handleDelete(feedback)} />
-                  </TableCell>
-                </TableRow>
+                <AdminOnlyItem
+                  value={i}
+                  feedback={feedback}
+                  pastFeedbackResults={pastFeedbackResults}
+                />
               ))}
             </TableBody>
           </Table>

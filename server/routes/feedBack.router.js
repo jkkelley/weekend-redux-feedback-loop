@@ -31,7 +31,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   // Bring me all of the Feedback results from DB
   pool
-    .query(`SELECT * FROM "feedback";`)
+    .query(`SELECT * FROM "feedback" ORDER BY "id" ASC;`)
     .then((result) => {
       // Send back all the rows
       res.send(result.rows);
@@ -58,6 +58,29 @@ router.delete("/:id", (req, res) => {
     })
     .catch((error) => {
       console.log(`Server is on the fritz... ${error}`);
+    });
+});
+
+// PUT -- We need to update flagged status
+router.put("/flagged/:id", (req, res) => {
+  // Set the action clicked data from client to variable
+  console.log(req.params.id)
+  const flagged = req.body.flagged;
+  console.log(req.body.flagged)
+  // Send a sql query over
+  const queryText = `
+    UPDATE "feedback" SET "flagged"=$1 WHERE "id"=$2;
+  `;
+  // Time for a dip
+  pool
+    .query(queryText, [flagged, req.params.id])
+    .then((result) => {
+      // Send back an OK
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log(`You're flagged button click had an ${error}`);
+      res.sendStatus(500);
     });
 });
 
