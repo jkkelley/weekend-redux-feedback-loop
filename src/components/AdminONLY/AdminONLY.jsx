@@ -1,8 +1,11 @@
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
 
 // Material-ui imports
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
+import FlagIcon from "@material-ui/icons/Flag";
+import FlagOutlinedIcon from '@material-ui/icons/FlagOutlined';
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -12,6 +15,7 @@ import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
 function AdminOnly() {
+  const history = useHistory();
   const [results, setResults] = useState([]);
   // need an axios GET promise
   const pastFeedbackResults = () => {
@@ -52,6 +56,7 @@ function AdminOnly() {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
+                <TableCell>Flag</TableCell>
                 <TableCell>Feeling</TableCell>
                 <TableCell>Comprehension</TableCell>
                 <TableCell>Support</TableCell>
@@ -62,6 +67,7 @@ function AdminOnly() {
             <TableBody>
               {results.map((feedback, i) => (
                 <TableRow key={i}>
+                  <TableCell><FlagIcon /><FlagOutlinedIcon /></TableCell>
                   <TableCell>{feedback.feeling}</TableCell>
                   <TableCell>{feedback.understanding}</TableCell>
                   <TableCell>{feedback.support}</TableCell>
