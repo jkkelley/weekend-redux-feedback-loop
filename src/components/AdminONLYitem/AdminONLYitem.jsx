@@ -55,6 +55,21 @@ function AdminOnlyItem({ feedback, value, pastFeedbackResults }) {
     }
   };
 
+  // need a axios DELETE promise
+  const handleDelete = (feedback) => {
+    console.log("you clicked handleDelete");
+    console.log(feedback);
+    axios
+      .delete(`/feedback/${feedback.id}`)
+      .then((response) => {
+        console.log(`The Server says... ${response.data}`);
+        // Redraw the table
+        pastFeedbackResults();
+      })
+      .catch((error) => {
+        console.log(`Sorry, couldn't handle the delete request: ${error}`);
+      });
+  };
 
   return (
     <TableRow value={value}>
