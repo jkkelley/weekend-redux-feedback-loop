@@ -4,11 +4,12 @@ import "./App.css";
 // ⬇ What we need to import
 import { Route, HashRouter as Router } from "react-router-dom";
 
+import AdminOnly from "../AdminONLY/AdminONLY";
 import Comments from "../Comments/Comments";
 import Feeling from "../Feeling/Feeling";
 import Header from "../Header/Header";
 import ReviewFeedBack from "../ReviewFeedBack/ReviewFeedBack";
-import Success from "../Success/Success"
+import Success from "../Success/Success";
 import Support from "../Support/Support";
 import Understanding from "../Understanding/Understanding";
 
@@ -36,6 +37,10 @@ function App() {
       </Route>
       <Route path="/success">
         <Success />
+      </Route>
+
+      <Route path="/admin">
+        <AdminOnly />
       </Route>
     </Router>
   );
