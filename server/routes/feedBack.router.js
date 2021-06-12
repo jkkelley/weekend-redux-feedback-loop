@@ -8,9 +8,9 @@ router.post("/", (req, res) => {
   const { feeling, understanding, support, comments } = req.body;
   // Query to insert data
   const queryText = `
-    INSERT INTO "feedback" (feeling, understanding, support, comments, flagged)
+    INSERT INTO "feedback" (feeling, understanding, support, comments)
     VALUES
-        ($1, $2, $3, $4, $5);
+        ($1, $2, $3, $4);
   `;
   // Package our results up and get them ready for the Database.
   const values = [feeling, understanding, support, comments];

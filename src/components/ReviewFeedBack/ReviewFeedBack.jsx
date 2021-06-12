@@ -22,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
 function ReviewFeedBack() {
   const classes = useStyles();
   const history = useHistory();
-  
+
   const feedBackForm = useSelector((store) => store.feedBackForm);
   console.log(feedBackForm);
 
@@ -31,10 +31,10 @@ function ReviewFeedBack() {
     console.log(`You clicked handleConformation button!`);
     // Get our data ready for POST
     const data = {
-      feeling: feedBackForm[0],
-      understanding: feedBackForm[1],
-      support: feedBackForm[2],
-      comments: feedBackForm[3],
+      feeling: feedBackForm[0].feeling,
+      understanding: feedBackForm[1].understanding,
+      support: feedBackForm[2].support,
+      comments: feedBackForm[3].comments,
     };
 
     axios
@@ -49,6 +49,7 @@ function ReviewFeedBack() {
         console.log(`Looks like we have a server Error: ${error}`);
       });
   };
+  console.log(feedBackForm[0]);
   return (
     <>
       <h2>Review Your Feedback</h2>
@@ -63,10 +64,10 @@ function ReviewFeedBack() {
             </TableRow>
           </TableHead>
           <TableBody>
-            <TableCell>{feedBackForm[0]}</TableCell>
-            <TableCell>{feedBackForm[1]}</TableCell>
-            <TableCell>{feedBackForm[2]}</TableCell>
-            <TableCell>{feedBackForm[3]}</TableCell>
+            <TableCell>{feedBackForm[0].feeling}</TableCell>
+            <TableCell>{feedBackForm[1].understanding}</TableCell>
+            <TableCell>{feedBackForm[2].support}</TableCell>
+            <TableCell>{feedBackForm[3].comments}</TableCell>
           </TableBody>
         </Table>
       </TableContainer>

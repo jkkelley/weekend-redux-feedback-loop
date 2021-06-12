@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Comments() {
-  const feedBackForm = useSelector(store => store.feedBackForm)
+  const feedBackForm = useSelector((store) => store.feedBackForm);
 
   const classes = useStyles();
   // Need to hold our input locally in a state so we
