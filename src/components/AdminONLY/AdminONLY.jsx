@@ -1,8 +1,13 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 import { useState, useEffect } from "react";
+
 import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
+
 // Material-ui imports
+import { makeStyles } from "@material-ui/core/styles";
+
+import Button from "@material-ui/core/Button";
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import FlagIcon from "@material-ui/icons/Flag";
 import FlagOutlinedIcon from "@material-ui/icons/FlagOutlined";
@@ -14,7 +19,15 @@ import TableContainer from "@material-ui/core/TableContainer";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
 
+const useStyles = makeStyles((theme) => ({
+  button: {
+    margin: theme.spacing(1),
+  },
+}));
+
 function AdminOnly() {
+  const classes = useStyles();
+
   // Create login to display feedback Results
   const history = useHistory();
   const [results, setResults] = useState([]);
@@ -50,6 +63,9 @@ function AdminOnly() {
       });
   };
 
+  const goHome = () => {
+    history.push("/");
+  };
   // display GET to table
   useEffect(() => {
     pastFeedbackResults();
@@ -58,6 +74,15 @@ function AdminOnly() {
   return (
     <>
       <h2>Feedback Results!</h2>
+      <Button
+        className={classes.button}
+        color="primary"
+        onClick={goHome}
+        variant="contained"
+      >
+        {" "}
+        Go Home
+      </Button>
       <div className="feedback-results-table-container">
         <TableContainer component={Paper}>
           <Table aria-label="simple table">
