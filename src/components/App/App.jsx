@@ -11,6 +11,7 @@ import Comments from "../Comments/Comments";
 import Feeling from "../Feeling/Feeling";
 import Header from "../Header/Header";
 import ReviewFeedBack from "../ReviewFeedBack/ReviewFeedBack";
+import Success from "../Success/Success"
 import Support from "../Support/Support";
 import Understanding from "../Understanding/Understanding";
 
@@ -35,6 +36,9 @@ function App() {
       </Route>
       <Route path="/review">
         <ReviewFeedBack />
+      </Route>
+      <Route path="/success">
+        <Success />
       </Route>
     </Router>
   );

@@ -6,15 +6,15 @@ const pool = require("../modules/pool");
 router.post("/", (req, res) => {
   // De-structure keys from the body
   const { feeling, understanding, support, comments } = req.body;
-
+  const flagged = true
   // Query to insert data
   const queryText = `
-    INSERT INTO "feedback" (feeling, understanding, support, comments)
+    INSERT INTO "feedback" (feeling, understanding, support, comments, flagged)
     VALUES
-        ($1, $2, $3, $4);
+        ($1, $2, $3, $4, $5);
   `;
 
-  const values = [feeling, understanding, support, comments];
+  const values = [feeling, understanding, support, comments, flagged];
 
   // Let's go for a swim to the database
   pool

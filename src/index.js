@@ -20,7 +20,8 @@ const feedBackForm = (state = [], action) => {
       return [...state, action.payload];
     case "ADD_COMMENTS":
       return [...state, action.payload];
-
+    case "RESET":
+      return [];
     default:
       return state;
   }

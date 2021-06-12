@@ -1,4 +1,5 @@
 import { makeStyles } from "@material-ui/core/styles";
+import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import axios from "axios";
@@ -20,7 +21,8 @@ const useStyles = makeStyles((theme) => ({
 
 function ReviewFeedBack() {
   const classes = useStyles();
-
+  const history = useHistory();
+  
   const feedBackForm = useSelector((store) => store.feedBackForm);
   console.log(feedBackForm);
 
@@ -39,6 +41,9 @@ function ReviewFeedBack() {
       .post("/feedback", data)
       .then((response) => {
         console.log(`response`, response);
+        // After comes back with their promise
+        // head over to /success
+        history.push("/success");
       })
       .catch((error) => {
         console.log(`Looks like we have a server Error: ${error}`);
@@ -68,9 +73,8 @@ function ReviewFeedBack() {
       <Button
         className={classes.button}
         color="primary"
-        variant="contained"
-        // endIcon={<Icon></Icon>}
         onClick={handleConformation}
+        variant="contained"
       >
         {" "}
         Confirm
