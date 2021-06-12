@@ -1,14 +1,15 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 // Material UI
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
+import InputLabel from "@material-ui/core/InputLabel";
+import MenuItem from "@material-ui/core/MenuItem";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
+import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
@@ -21,6 +22,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Support() {
+  const feedBackForm = useSelector(store => store.feedBackForm)
+
   const classes = useStyles();
   // Need to hold our input locally in a state so we
   // can check the length and ensure we had an input.
@@ -44,9 +47,15 @@ function Support() {
     if (supportInput === "") {
       history.push("/support");
     } else {
-      dispatch({ type: "ADD_SUPPORT", payload:  supportInput });
-        history.push("/comments");
+      dispatch({ type: "ADD_SUPPORT", payload: {support: supportInput, id: 3 }});
+      history.push("/comments");
     }
+  };
+
+  const handleBack = (event) => {
+    console.log("you clicked handleBack");
+    dispatch({ type: "GO_BACK", payload: feedBackForm[1] });
+    history.push("/understanding");
   };
   return (
     <>
@@ -60,6 +69,7 @@ function Support() {
           <MenuItem value={1}>1</MenuItem>
         </Select>
       </FormControl>
+      <NavigateBeforeIcon onClick={handleBack} />
       <NavigateNextIcon onClick={handleSubmit} />
     </>
   );

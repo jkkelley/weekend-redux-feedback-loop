@@ -20,6 +20,9 @@ const feedBackForm = (state = [], action) => {
       return [...state, action.payload];
     case "ADD_COMMENTS":
       return [...state, action.payload];
+    case "GO_BACK":
+      const matched = (submission) => submission.id !== action.payload.id;
+      return state.filter(matched);
     case "RESET":
       return [];
     default:

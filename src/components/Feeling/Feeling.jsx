@@ -44,7 +44,10 @@ function Feeling() {
     if (feelingInput === "") {
       history.push("/");
     } else {
-      dispatch({ type: "ADD_FEELING", payload:  feelingInput });
+      dispatch({
+        type: "ADD_FEELING",
+        payload: { feeling: feelingInput, id: 1 },
+      });
       history.push("/understanding");
     }
   };

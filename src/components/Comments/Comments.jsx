@@ -1,9 +1,10 @@
 import { useHistory } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import TextField from "@material-ui/core/TextField";
 
@@ -24,6 +25,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Comments() {
+  const feedBackForm = useSelector(store => store.feedBackForm)
+
   const classes = useStyles();
   // Need to hold our input locally in a state so we
   // can check the length and ensure we had an input.
@@ -47,10 +50,16 @@ function Comments() {
 
     dispatch({
       type: "ADD_COMMENTS",
-      payload:  commentsInput
+      payload: { comments: commentsInput, id: 4 },
     });
-    console.log(commentsInput)
+    console.log(commentsInput);
     history.push("/review");
+  };
+
+  const handleBack = (event) => {
+    console.log("you clicked handleBack");
+    dispatch({ type: "GO_BACK", payload: feedBackForm[2] });
+    history.push("/support");
   };
   return (
     <>
@@ -61,6 +70,7 @@ function Comments() {
           label="Comments?"
           onChange={(event) => setCommentsInput(event.target.value)}
         />
+        <NavigateBeforeIcon onClick={handleBack} />
         <NavigateNextIcon onClick={handleSubmit} />
       </form>
     </>
