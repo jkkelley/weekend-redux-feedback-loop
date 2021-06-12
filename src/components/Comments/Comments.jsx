@@ -47,10 +47,10 @@ function Comments() {
 
     dispatch({
       type: "ADD_COMMENTS",
-      payload: { comments: commentsInput },
+      payload:  commentsInput
     });
     console.log(commentsInput)
-    history.push("/");
+    history.push("/review");
   };
   return (
     <>

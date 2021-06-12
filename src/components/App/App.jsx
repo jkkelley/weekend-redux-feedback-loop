@@ -9,29 +9,32 @@ import { useEffect } from "react";
 
 import Comments from "../Comments/Comments";
 import Feeling from "../Feeling/Feeling";
+import Header from "../Header/Header";
+import ReviewFeedBack from "../ReviewFeedBack/ReviewFeedBack";
 import Support from "../Support/Support";
 import Understanding from "../Understanding/Understanding";
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <header className="App-header">
-          <h1 className="App-title">Feedback!</h1>
-          <h4>Don't forget it!</h4>
-        </header>
-      </div>
       <Route path="/" exact>
+        <Header />
         <Feeling />
       </Route>
       <Route path="/understanding">
+        <Header />
         <Understanding />
       </Route>
       <Route path="/support">
+        <Header />
         <Support />
       </Route>
       <Route path="/comments">
+        <Header />
         <Comments />
+      </Route>
+      <Route path="/review">
+        <ReviewFeedBack />
       </Route>
     </Router>
   );

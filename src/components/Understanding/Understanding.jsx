@@ -46,7 +46,7 @@ function Understanding() {
     } else {
       dispatch({
         type: "ADD_UNDERSTANDING",
-        payload: { understanding: understandingInput },
+        payload:  understandingInput 
       });
       history.push("/support");
     }

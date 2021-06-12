@@ -44,7 +44,7 @@ function Support() {
     if (supportInput === "") {
       history.push("/support");
     } else {
-      dispatch({ type: "ADD_SUPPORT", payload: { support: supportInput } });
+      dispatch({ type: "ADD_SUPPORT", payload:  supportInput });
         history.push("/comments");
     }
   };
