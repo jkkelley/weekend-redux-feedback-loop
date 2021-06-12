@@ -33,9 +33,9 @@ function Comments() {
   // Bring in dispatch to send our input to our reducer
   const dispatch = useDispatch();
 
-  const handleChange = (event) => {
-    setCommentsInput(event.target.value);
-  };
+  //   const handleChange = (event) => {
+  //     setCommentsInput(event.target.value);
+  //   };
   console.log(commentsInput);
 
   const handleSubmit = (event) => {
@@ -44,15 +44,13 @@ function Comments() {
 
     // To prevent a user from inputting an undefined value in
     // we ask that our understandingInput doesn't come back as an empty string
-    if (commentsInput === "") {
-      history.push("/comments");
-    } else {
-      dispatch({
-        type: "ADD_COMMENTS",
-        payload: { comments: commentsInput },
-      });
-      history.push("/");
-    }
+
+    dispatch({
+      type: "ADD_COMMENTS",
+      payload: { comments: commentsInput },
+    });
+    console.log(commentsInput)
+    history.push("/");
   };
   return (
     <>
