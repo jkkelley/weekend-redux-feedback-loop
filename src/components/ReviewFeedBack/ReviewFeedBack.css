@@ -1,7 +1,4 @@
-h2 {
-  /* position: absolute; */
-  margin: 0 auto 0 auto;
-}
+
 .review-container {
   display: flex;
   justify-content: center;

@@ -2,7 +2,10 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
+import "./Success.css"
+
 import Button from "@material-ui/core/Button";
+import ThumbUpIcon from '@material-ui/icons/ThumbUp';
 
 const useStyles = makeStyles((theme) => ({
   button: {
@@ -24,13 +27,13 @@ function Success() {
     history.push("/");
   };
   return (
-    <>
+    <div className="success-container">
       <div className="success-page-container">
-        <div>
-          <h3>Feedback!</h3>
+        <div className="feedback-success-message">
+          <h3><ThumbUpIcon />  Feedback Success!</h3>
         </div>
         <div>
-          <h3>Thank You!</h3>
+          <h3 id="thank-you">Thank You!</h3>
           <Button
             className={classes.button}
             color="primary"
@@ -42,7 +45,7 @@ function Success() {
           </Button>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
