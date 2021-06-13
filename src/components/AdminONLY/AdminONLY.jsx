@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
+import "./AdminONLY.css"
 import AdminLogin from "../AdminLogin/AdminLogin";
 import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
 
@@ -56,8 +57,8 @@ function AdminOnly() {
   }, []);
 
   return (
-    <div>
-      <h2>Admin Feedback Results Page</h2>
+    <div className="admin-login-page">
+      <h2 className="admin-login-heading-message">Admin Feedback Results Page</h2>
       <Button
         className={classes.button}
         color="primary"
@@ -68,9 +69,7 @@ function AdminOnly() {
         Go Home
       </Button>
       {!passCheck ? (
-        <>
           <AdminLogin />
-        </>
       ) : (
         <div className="feedback-results-table-container">
           <TableContainer component={Paper}>
