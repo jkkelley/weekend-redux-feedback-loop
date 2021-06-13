@@ -43,15 +43,11 @@ function Comments() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submit Button clicked!");
-
-    // To prevent a user from inputting an undefined value in
-    // we ask that our understandingInput doesn't come back as an empty string
-
+    // Dispatch our info to our reducer
     dispatch({
       type: "ADD_COMMENTS",
       payload: { comments: commentsInput, id: 4 },
     });
-    console.log(commentsInput);
     history.push("/review");
   };
 

@@ -36,6 +36,10 @@ function AdminLogin() {
     setErrors(true);
   };
 
+  // Below we have your standard form inputs.
+  // If we get an error back with the login,
+  // it'll flip the TextFields to be Red and letting
+  // the admin know there was incorrect inputs.
   return (
     <div className="admin-form-inputs-container">
       {errors ? (
