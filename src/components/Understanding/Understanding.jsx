@@ -6,6 +6,7 @@ import "./Understanding.css";
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
@@ -23,12 +24,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Understanding() {
+  // Bring the store in.
   const feedBackForm = useSelector((store) => store.feedBackForm);
-  // console.log(feedBackForm[0].id)
+  // Below allows us to use useStyles from above
   const classes = useStyles();
   // Need to hold our input locally in a state so we
   // can check the length and ensure we had an input.
   const [understandingInput, setUnderstandingInput] = useState("");
+  // Default errorState set to false, if we trigger
+  // a non-input, change the state to true. This triggers our
+  // conditional rendering and displays a required input.
+  const [errorState, setErrorState] = useState(false);
   // Bring in history to send ourselves to the next page
   const history = useHistory();
   // Bring in dispatch to send our input to our reducer
@@ -36,8 +42,8 @@ function Understanding() {
 
   const handleChange = (event) => {
     setUnderstandingInput(event.target.value);
+    setErrorState(false);
   };
-  console.log(understandingInput);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -46,8 +52,9 @@ function Understanding() {
     // To prevent a user from inputting an undefined value in
     // we ask that our understandingInput doesn't come back as an empty string
     if (understandingInput === "") {
-      history.push("/understanding");
+      setErrorState(true);
     } else {
+      setErrorState(false);
       dispatch({
         type: "ADD_UNDERSTANDING",
         payload: { understanding: understandingInput, id: 2 },
@@ -63,16 +70,34 @@ function Understanding() {
   };
   return (
     <>
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Understanding?</InputLabel>
-        <Select value={understandingInput} onChange={handleChange}>
-          <MenuItem value={5}>5</MenuItem>
-          <MenuItem value={4}>4</MenuItem>
-          <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-          <MenuItem value={1}>1</MenuItem>
-        </Select>
-      </FormControl>
+      {!errorState ? (
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">Understanding?</InputLabel>
+          <Select value={understandingInput} onChange={handleChange}>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+          </Select>
+        </FormControl>
+      ) : (
+        <>
+          <FormControl className={classes.formControl} error>
+            <InputLabel id="demo-simple-select-error-label">
+              Understanding?
+            </InputLabel>
+            <Select value={understandingInput} onChange={handleChange}>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+            </Select>
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+        </>
+      )}
       <NavigateBeforeIcon onClick={handleBack} />
       <NavigateNextIcon onClick={handleSubmit} />
     </>

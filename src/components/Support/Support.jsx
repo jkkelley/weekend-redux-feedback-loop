@@ -5,6 +5,7 @@ import { useState } from "react";
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
 import InputLabel from "@material-ui/core/InputLabel";
 import MenuItem from "@material-ui/core/MenuItem";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
@@ -22,12 +23,17 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function Support() {
-  const feedBackForm = useSelector(store => store.feedBackForm)
-
+  // Bring the store in.
+  const feedBackForm = useSelector((store) => store.feedBackForm);
+  // Below allows us to use useStyles from above
   const classes = useStyles();
   // Need to hold our input locally in a state so we
   // can check the length and ensure we had an input.
   const [supportInput, setSupportInput] = useState("");
+  // Default errorState set to false, if we trigger
+  // a non-input, change the state to true. This triggers our
+  // conditional rendering and displays a required input.
+  const [errorState, setErrorState] = useState(false);
   // Bring in history to send ourselves to the next page
   const history = useHistory();
   // Bring in dispatch to send our input to our reducer
@@ -35,8 +41,8 @@ function Support() {
 
   const handleChange = (event) => {
     setSupportInput(event.target.value);
+    setErrorState(false);
   };
-  console.log(supportInput);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -45,9 +51,13 @@ function Support() {
     // To prevent a user from inputting an undefined value in
     // we ask that our supportInput doesn't come back as an empty string
     if (supportInput === "") {
-      history.push("/support");
+      setErrorState(true);
     } else {
-      dispatch({ type: "ADD_SUPPORT", payload: {support: supportInput, id: 3 }});
+      setErrorState(false);
+      dispatch({
+        type: "ADD_SUPPORT",
+        payload: { support: supportInput, id: 3 },
+      });
       history.push("/comments");
     }
   };
@@ -59,6 +69,7 @@ function Support() {
   };
   return (
     <>
+    {!errorState ? (
       <FormControl className={classes.formControl}>
         <InputLabel id="demo-simple-select-label">Support?</InputLabel>
         <Select value={supportInput} onChange={handleChange}>
@@ -69,7 +80,25 @@ function Support() {
           <MenuItem value={1}>1</MenuItem>
         </Select>
       </FormControl>
-      <NavigateBeforeIcon onClick={handleBack} />
+     
+    ) : (
+      <>
+          <FormControl className={classes.formControl} error>
+            <InputLabel id="demo-simple-select-error-label">
+              Support?
+            </InputLabel>
+            <Select value={supportInput} onChange={handleChange}>
+              <MenuItem value={5}>5</MenuItem>
+              <MenuItem value={4}>4</MenuItem>
+              <MenuItem value={3}>3</MenuItem>
+              <MenuItem value={2}>2</MenuItem>
+              <MenuItem value={1}>1</MenuItem>
+            </Select>
+            <FormHelperText>Required</FormHelperText>
+          </FormControl>
+        </>
+    )}
+    <NavigateBeforeIcon onClick={handleBack} />
       <NavigateNextIcon onClick={handleSubmit} />
     </>
   );
