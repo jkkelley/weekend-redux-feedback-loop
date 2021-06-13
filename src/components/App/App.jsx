@@ -16,22 +16,24 @@ import Understanding from "../Understanding/Understanding";
 function App() {
   return (
     <Router>
-      <Route path="/" exact>
-        <Header />
-        <Feeling />
-      </Route>
-      <Route path="/understanding">
-        <Header />
-        <Understanding />
-      </Route>
-      <Route path="/support">
-        <Header />
-        <Support />
-      </Route>
-      <Route path="/comments">
-        <Header />
-        <Comments />
-      </Route>
+      <div className="margin-app">
+        <Route path="/" exact>
+          <Header />
+          <Feeling />
+        </Route>
+        <Route path="/understanding">
+          <Header />
+          <Understanding />
+        </Route>
+        <Route path="/support">
+          <Header />
+          <Support />
+        </Route>
+        <Route path="/comments">
+          <Header />
+          <Comments />
+        </Route>
+      </div>
       <Route path="/review">
         <ReviewFeedBack />
       </Route>

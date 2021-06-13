@@ -2,7 +2,9 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
-import "./Comments.css"
+import "../Feeling/Feeling.css";
+
+import "./Comments.css";
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -22,7 +24,6 @@ const useStyles = makeStyles((theme) => ({
     "& > *": {
       margin: theme.spacing(1),
       width: "ch",
-      
     },
   },
 }));
@@ -60,17 +61,19 @@ function Comments() {
     history.push("/support");
   };
   return (
-    <div className="form-container">
-      <form className={classes.root} noValidate autoComplete="off">
-        <TextField
-          required
-          id="standard-required"
-          label="Comments?"
-          onChange={(event) => setCommentsInput(event.target.value)}
-        />
-        <NavigateBeforeIcon onClick={handleBack} />
-        <NavigateNextIcon onClick={handleSubmit} />
-      </form>
+    <div className="feeling-container">
+      <div className="form-container">
+        <form className={classes.root} noValidate autoComplete="off">
+          <TextField
+            required
+            id="standard-required"
+            label="Comments?"
+            onChange={(event) => setCommentsInput(event.target.value)}
+          />
+          <NavigateBeforeIcon onClick={handleBack} />
+          <NavigateNextIcon onClick={handleSubmit} />
+        </form>
+      </div>
     </div>
   );
 }

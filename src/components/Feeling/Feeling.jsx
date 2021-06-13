@@ -1,3 +1,5 @@
+import "./Feeling.css"
+
 import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
@@ -59,7 +61,7 @@ function Feeling() {
     }
   };
   return (
-    <>
+    <div className="feeling-container">
       {!errorState ? (
         <>
           <FormControl className={classes.formControl}>
@@ -91,7 +93,7 @@ function Feeling() {
         </>
       )}
       <NavigateNextIcon onClick={handleSubmit} />
-    </>
+    </div>
   );
 }
 

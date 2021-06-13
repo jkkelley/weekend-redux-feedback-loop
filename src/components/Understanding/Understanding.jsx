@@ -2,6 +2,7 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 import "./Understanding.css";
+import "../Feeling/Feeling.css"
 
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
@@ -69,7 +70,8 @@ function Understanding() {
     history.push("/");
   };
   return (
-    <>
+    <div className="feeling-container">
+
       {!errorState ? (
         <FormControl className={classes.formControl}>
           <InputLabel id="demo-simple-select-label">Understanding?</InputLabel>
@@ -100,7 +102,7 @@ function Understanding() {
       )}
       <NavigateBeforeIcon onClick={handleBack} />
       <NavigateNextIcon onClick={handleSubmit} />
-    </>
+    </div>
   );
 }
 

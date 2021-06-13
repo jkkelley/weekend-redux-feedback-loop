@@ -2,6 +2,8 @@ import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
+import "../Feeling/Feeling.css";
+
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import FormControl from "@material-ui/core/FormControl";
@@ -68,21 +70,20 @@ function Support() {
     history.push("/understanding");
   };
   return (
-    <>
-    {!errorState ? (
-      <FormControl className={classes.formControl}>
-        <InputLabel id="demo-simple-select-label">Support?</InputLabel>
-        <Select value={supportInput} onChange={handleChange}>
-          <MenuItem value={5}>5</MenuItem>
-          <MenuItem value={4}>4</MenuItem>
-          <MenuItem value={3}>3</MenuItem>
-          <MenuItem value={2}>2</MenuItem>
-          <MenuItem value={1}>1</MenuItem>
-        </Select>
-      </FormControl>
-     
-    ) : (
-      <>
+    <div className="feeling-container">
+      {!errorState ? (
+        <FormControl className={classes.formControl}>
+          <InputLabel id="demo-simple-select-label">Support?</InputLabel>
+          <Select value={supportInput} onChange={handleChange}>
+            <MenuItem value={5}>5</MenuItem>
+            <MenuItem value={4}>4</MenuItem>
+            <MenuItem value={3}>3</MenuItem>
+            <MenuItem value={2}>2</MenuItem>
+            <MenuItem value={1}>1</MenuItem>
+          </Select>
+        </FormControl>
+      ) : (
+        <>
           <FormControl className={classes.formControl} error>
             <InputLabel id="demo-simple-select-error-label">
               Support?
@@ -97,10 +98,10 @@ function Support() {
             <FormHelperText>Required</FormHelperText>
           </FormControl>
         </>
-    )}
-    <NavigateBeforeIcon onClick={handleBack} />
+      )}
+      <NavigateBeforeIcon onClick={handleBack} />
       <NavigateNextIcon onClick={handleSubmit} />
-    </>
+    </div>
   );
 }
 
