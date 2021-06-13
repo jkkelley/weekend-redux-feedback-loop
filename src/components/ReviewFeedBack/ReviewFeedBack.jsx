@@ -2,6 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
+import "./ReviewFeedBack.css"
 import axios from "axios";
 import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
@@ -60,43 +61,45 @@ function ReviewFeedBack() {
   console.log(feedBackForm[0]);
   return (
     <div className="review-container">
-      <h2>Review Your Feedback</h2>
-      <TableContainer component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Feeling</TableCell>
-              <TableCell>Understanding</TableCell>
-              <TableCell>Support</TableCell>
-              <TableCell>Comments</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableCell>{feedBackForm[0].feeling}</TableCell>
-            <TableCell>{feedBackForm[1].understanding}</TableCell>
-            <TableCell>{feedBackForm[2].support}</TableCell>
-            <TableCell>{feedBackForm[3].comments}</TableCell>
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Button
-        className={classes.button}
-        color="primary"
-        onClick={handleConformation}
-        variant="contained"
-      >
-        {" "}
-        Confirm
-      </Button>
-      <Button
-        className={classes.button}
-        color="primary"
-        onClick={handleBack}
-        variant="contained"
-      >
-        {" "}
-        Go back
-      </Button>
+      <div className="review-page-container">
+        <h2>Review Your Feedback</h2>
+        <TableContainer component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Feeling</TableCell>
+                <TableCell>Understanding</TableCell>
+                <TableCell>Support</TableCell>
+                <TableCell>Comments</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableCell>{feedBackForm[0].feeling}</TableCell>
+              <TableCell>{feedBackForm[1].understanding}</TableCell>
+              <TableCell>{feedBackForm[2].support}</TableCell>
+              <TableCell>{feedBackForm[3].comments}</TableCell>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Button
+          className={classes.button}
+          color="primary"
+          onClick={handleConformation}
+          variant="contained"
+        >
+          {" "}
+          Confirm
+        </Button>
+        <Button
+          className={classes.button}
+          color="primary"
+          onClick={handleBack}
+          variant="contained"
+        >
+          {" "}
+          Go back
+        </Button>
+      </div>
     </div>
   );
 }
