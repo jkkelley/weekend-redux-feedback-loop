@@ -1,6 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import axios from "axios";
 import Button from "@material-ui/core/Button";
@@ -24,6 +24,8 @@ function ReviewFeedBack() {
 
   const feedBackForm = useSelector((store) => store.feedBackForm);
   console.log(feedBackForm);
+  // Bring in dispatch to send our input to our reducer
+  const dispatch = useDispatch();
 
   const handleConformation = (event) => {
     event.preventDefault();
@@ -51,8 +53,9 @@ function ReviewFeedBack() {
 
   const handleBack = (event) => {
     event.preventDefault();
-    console.log("clicked handleBack")
-    history.push("/comments")
+    console.log("clicked handleBack");
+    dispatch({ type: "GO_BACK", payload: feedBackForm[3] });
+    history.push("/comments");
   };
   console.log(feedBackForm[0]);
   return (
