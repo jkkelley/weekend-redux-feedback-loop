@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useState, useEffect } from "react";
 
 import AdminLogin from "../AdminLogin/AdminLogin";
@@ -25,6 +25,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 function AdminOnly() {
+  const dispatch = useDispatch();
   const classes = useStyles();
   const passCheck = useSelector((store) => store.passCheck);
 
@@ -46,6 +47,7 @@ function AdminOnly() {
   };
 
   const goHome = () => {
+    dispatch({ type: "RESET_PASSCHECK" });
     history.push("/");
   };
   // display GET to table

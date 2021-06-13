@@ -31,9 +31,7 @@ function AdminLogin() {
     event.preventDefault();
     console.log("You clicked handleSubmit");
 
-    dispatch({ type: "CHECK_THIS", payload: { login: login, pass: password } });
-    console.log(passCheck)
-   
+    dispatch({ type: "CHECK_THIS", payload: { login: login, pass: password } }); 
   };
 
   return (

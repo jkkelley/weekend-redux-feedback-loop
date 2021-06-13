@@ -43,6 +43,8 @@ const passCheck = (state = false, action) => {
       if (action.payload.login !== login || action.payload.pass !== pass) {
         return false;
       }
+    case "RESET_PASSCHECK":
+      return false;
     default:
       return state;
   }
