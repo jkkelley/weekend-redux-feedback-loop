@@ -30,3 +30,14 @@ Link to software that is required to install the app.
 3. Open up your editor of choice and run "npm install" in the root directory of project
 4. Run "npm run server" in the root directory of the project to get the server up and running.
 5. Run "npm run client" in the root directory of the project to get the app up and running.
+
+## Built with a 🧱 🏠 
+
+List of technologies used
+* [Node.js](https://nodejs.org/)
+* [PostgreSQL](https://www.postgresql.org/)
+* [Postico](https://eggerapps.at/postico/)
+* [Reactjs](https://reactjs.org/)
+* [Reduxjs](https://redux.js.org/)
+* [Material-ui](https://material-ui.com/)
+* [Express](https://expressjs.com/)
