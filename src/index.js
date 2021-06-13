@@ -31,7 +31,9 @@ const feedBackForm = (state = [], action) => {
 };
 
 // ⬇ Username and Password reducer.
+
 const passCheck = (state = false, action) => {
+  // **** YOU NEED TO USE THESE TO GET INTO THE ADMIN PAGE ****
   const login = "Admin";
   const pass = "Qwerty123";
   switch (action.type) {
