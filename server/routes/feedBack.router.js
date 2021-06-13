@@ -24,6 +24,7 @@ router.post("/", (req, res) => {
     })
     .catch((error) => {
       console.log(`Hey Bob go get the Hammer, we got an... ${error}`);
+      res.sendStatus(500);
     });
 });
 
@@ -64,9 +65,9 @@ router.delete("/:id", (req, res) => {
 // PUT -- We need to update flagged status
 router.put("/flagged/:id", (req, res) => {
   // Set the action clicked data from client to variable
-  console.log(req.params.id)
+  console.log(req.params.id);
   const flagged = req.body.flagged;
-  console.log(req.body.flagged)
+  console.log(req.body.flagged);
   // Send a sql query over
   const queryText = `
     UPDATE "feedback" SET "flagged"=$1 WHERE "id"=$2;
