@@ -1,9 +1,11 @@
 # Feedback App
 
 ## Description
-IMPORTANT -- To login to the /admin page, you need this login info
-    -- username: Admin,
-    -- password: Qwerty123
+
+### IMPORTANT 
+    - To login to the /admin page, you need this login info
+    - username: Admin,
+    - password: Qwerty123
 
 Upon opening the app, the user arrives at the home page of the Feedback App. They are prompted with with how they are feeling. The user must enter from the selection
 before moving on. After making a selection the user moves to the understanding page and are prompted with how Understanding of the material they feel. As before, the user makes a selection and moves onto the Support page where they are prompted with how Supported they feel. After the selection they move onto the comments page where they have the choice to leave a message or not before arriving at the review page.
@@ -14,5 +16,17 @@ At any point before confirming your Feedback, the user has the ability to go bac
 
 To see the fully functional site, please visit: [Feedback App](https://redux-feedback-review-loop.herokuapp.com/#/)
 
+## Prerequisites
 
+Link to software that is required to install the app.
+* [Node.js](https://nodejs.org/)
+* [Postico](https://eggerapps.at/postico/)
 
+## Installation
+
+1. Create a database in Postico named "prime_feedback"
+2. The queries in the [data.sql] file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries.
+
+3. Open up your editor of choice and run "npm install" in the root directory of project
+4. Run "npm run server" in the root directory of the project to get the server up and running.
+5. Run "npm run client" in the root directory of the project to get the app up and running.
