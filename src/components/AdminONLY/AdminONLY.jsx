@@ -57,7 +57,7 @@ function AdminOnly() {
 
   return (
     <div>
-      <h2>Feedback Results!</h2>
+      <h2>Admin Feedback Results Page</h2>
       <Button
         className={classes.button}
         color="primary"
