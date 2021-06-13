@@ -17,7 +17,7 @@ import Select from "@material-ui/core/Select";
 const useStyles = makeStyles((theme) => ({
   formControl: {
     margin: theme.spacing(1),
-    minWidth: 140,
+    minWidth: 150,
   },
   selectEmpty: {
     marginTop: theme.spacing(2),
@@ -73,7 +73,7 @@ function Understanding() {
     <div className="feeling-container">
 
       {!errorState ? (
-        <FormControl className={classes.formControl}>
+        <FormControl className={classes.formControl} required>
           <InputLabel id="demo-simple-select-label">Understanding?</InputLabel>
           <Select value={understandingInput} onChange={handleChange}>
             <MenuItem value={5}>5</MenuItem>

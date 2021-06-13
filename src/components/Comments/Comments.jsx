@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
       margin: theme.spacing(1),
-      width: "ch",
+
     },
   },
 }));
@@ -65,8 +65,7 @@ function Comments() {
       <div className="form-container">
         <form className={classes.root} noValidate autoComplete="off">
           <TextField
-            required
-            id="standard-required"
+            id="standard-read-only-input"
             label="Comments?"
             onChange={(event) => setCommentsInput(event.target.value)}
           />

@@ -59,7 +59,7 @@ function ReviewFeedBack() {
   };
   console.log(feedBackForm[0]);
   return (
-    <>
+    <div className="review-container">
       <h2>Review Your Feedback</h2>
       <TableContainer component={Paper}>
         <Table aria-label="simple table">
@@ -97,7 +97,7 @@ function ReviewFeedBack() {
         {" "}
         Go back
       </Button>
-    </>
+    </div>
   );
 }
 

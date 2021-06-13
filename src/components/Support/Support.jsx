@@ -72,7 +72,7 @@ function Support() {
   return (
     <div className="feeling-container">
       {!errorState ? (
-        <FormControl className={classes.formControl}>
+        <FormControl className={classes.formControl} required>
           <InputLabel id="demo-simple-select-label">Support?</InputLabel>
           <Select value={supportInput} onChange={handleChange}>
             <MenuItem value={5}>5</MenuItem>

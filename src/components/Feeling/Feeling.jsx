@@ -64,7 +64,7 @@ function Feeling() {
     <div className="feeling-container">
       {!errorState ? (
         <>
-          <FormControl className={classes.formControl}>
+          <FormControl className={classes.formControl} required>
             <InputLabel id="demo-simple-select-label">Feeling?</InputLabel>
             <Select value={feelingInput} onChange={handleChange}>
               <MenuItem value={5}>5</MenuItem>
