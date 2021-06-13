@@ -29,9 +29,12 @@ function AdminLogin() {
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("You clicked handleSubmit");
+
     dispatch({ type: "CHECK_THIS", payload: { login: login, pass: password } });
-    
+    console.log(passCheck)
+   
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -41,7 +44,7 @@ function AdminLogin() {
     >
       <TextField
         id="standard-required"
-        label="Required"
+        label="Username"
         onChange={(event) => setLogin(event.target.value)}
         required
       />
@@ -50,6 +53,7 @@ function AdminLogin() {
         id="standard-password-input"
         label="Password"
         onChange={(event) => setPassword(event.target.value)}
+        required
         type="password"
       />
       <Button

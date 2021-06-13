@@ -33,8 +33,7 @@ function AdminOnly() {
 
   // Create login to display feedback Results
   const history = useHistory();
-  const [checkin, setCheckin] = useState(passCheck);
-  console.log(checkin);
+
   const [results, setResults] = useState([]);
   // need an axios GET promise
   const pastFeedbackResults = () => {
@@ -42,10 +41,6 @@ function AdminOnly() {
       .get("/feedback")
       .then((response) => {
         console.log(response.data);
-        // for (let flags of response.data) {
-        //   setFlagged(flags.flagged);
-        // }
-        // setFlagged(response.data[0].flagged);
         setResults(response.data);
       })
       .catch((error) => {
@@ -64,41 +59,46 @@ function AdminOnly() {
   return (
     <>
       <h2>Feedback Results!</h2>
-      <AdminLogin />
-      <Button
-        className={classes.button}
-        color="primary"
-        onClick={goHome}
-        variant="contained"
-      >
-        {" "}
-        Go Home
-      </Button>
-      <div className="feedback-results-table-container">
-        <TableContainer component={Paper}>
-          <Table aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Flag</TableCell>
-                <TableCell>Feeling</TableCell>
-                <TableCell>Comprehension</TableCell>
-                <TableCell>Support</TableCell>
-                <TableCell>Comments</TableCell>
-                <TableCell>Delete</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {results.map((feedback, i) => (
-                <AdminOnlyItem
-                  value={i}
-                  feedback={feedback}
-                  pastFeedbackResults={pastFeedbackResults}
-                />
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-      </div>
+      {!passCheck ? (
+        <>
+          <AdminLogin />{" "}
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={goHome}
+            variant="contained"
+          >
+            {" "}
+            Go Home
+          </Button>
+        </>
+      ) : (
+        <div className="feedback-results-table-container">
+          <TableContainer component={Paper}>
+            <Table aria-label="simple table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>Flag</TableCell>
+                  <TableCell>Feeling</TableCell>
+                  <TableCell>Comprehension</TableCell>
+                  <TableCell>Support</TableCell>
+                  <TableCell>Comments</TableCell>
+                  <TableCell>Delete</TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {results.map((feedback, i) => (
+                  <AdminOnlyItem
+                    value={i}
+                    feedback={feedback}
+                    pastFeedbackResults={pastFeedbackResults}
+                  />
+                ))}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        </div>
+      )}
     </>
   );
 }

@@ -18,7 +18,7 @@ import TableRow from "@material-ui/core/TableRow";
 function AdminOnlyItem({ feedback, value, pastFeedbackResults }) {
   const [flagged, setFlagged] = useState(feedback.flagged);
   //   const currentFlag = setFlagged(feedback.flagged);
-  console.log(feedback.flagged);
+  // console.log(feedback.flagged);
   // Need to handle the flipped useState
   const handleFlip = (feedback) => {
     console.log("clicked handleFlip");
