@@ -30,6 +30,7 @@ const feedBackForm = (state = [], action) => {
   }
 };
 
+// ⬇ Username and Password reducer.
 const passCheck = (state = false, action) => {
   const login = "Admin";
   const pass = "Qwerty123";

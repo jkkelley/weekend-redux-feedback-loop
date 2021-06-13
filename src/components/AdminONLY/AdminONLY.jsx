@@ -1,18 +1,15 @@
 import axios from "axios";
 import { useHistory } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
 import AdminLogin from "../AdminLogin/AdminLogin";
+import AdminOnlyItem from "../AdminONLYitem/AdminONLYitem";
 
 // Material-ui imports
 import { makeStyles } from "@material-ui/core/styles";
 
 import Button from "@material-ui/core/Button";
-import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
-import FlagIcon from "@material-ui/icons/Flag";
-import FlagOutlinedIcon from "@material-ui/icons/FlagOutlined";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
@@ -57,20 +54,20 @@ function AdminOnly() {
   }, []);
 
   return (
-    <>
+    <div>
       <h2>Feedback Results!</h2>
+      <Button
+        className={classes.button}
+        color="primary"
+        onClick={goHome}
+        variant="contained"
+      >
+        {" "}
+        Go Home
+      </Button>
       {!passCheck ? (
         <>
-          <AdminLogin />{" "}
-          <Button
-            className={classes.button}
-            color="primary"
-            onClick={goHome}
-            variant="contained"
-          >
-            {" "}
-            Go Home
-          </Button>
+          <AdminLogin />
         </>
       ) : (
         <div className="feedback-results-table-container">
@@ -88,18 +85,20 @@ function AdminOnly() {
               </TableHead>
               <TableBody>
                 {results.map((feedback, i) => (
-                  <AdminOnlyItem
-                    value={i}
-                    feedback={feedback}
-                    pastFeedbackResults={pastFeedbackResults}
-                  />
+                  <TableRow key={i}>
+                    <AdminOnlyItem
+                      value={i}
+                      feedback={feedback}
+                      pastFeedbackResults={pastFeedbackResults}
+                    />
+                  </TableRow>
                 ))}
               </TableBody>
             </Table>
           </TableContainer>
         </div>
       )}
-    </>
+    </div>
   );
 }
 

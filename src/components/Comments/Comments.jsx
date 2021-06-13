@@ -1,7 +1,9 @@
 import { useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
+
 import "./Comments.css"
+
 // Material UI
 import { makeStyles } from "@material-ui/core/styles";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
@@ -36,11 +38,6 @@ function Comments() {
   const history = useHistory();
   // Bring in dispatch to send our input to our reducer
   const dispatch = useDispatch();
-
-  //   const handleChange = (event) => {
-  //     setCommentsInput(event.target.value);
-  //   };
-  console.log(commentsInput);
 
   const handleSubmit = (event) => {
     event.preventDefault();

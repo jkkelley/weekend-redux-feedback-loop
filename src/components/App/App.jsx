@@ -38,7 +38,6 @@ function App() {
       <Route path="/success">
         <Success />
       </Route>
-
       <Route path="/admin">
         <AdminOnly />
       </Route>

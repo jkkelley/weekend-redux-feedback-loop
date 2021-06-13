@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 import axios from "axios";
 import Button from "@material-ui/core/Button";
-import Icon from "@material-ui/core/Icon";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";

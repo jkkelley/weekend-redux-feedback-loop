@@ -1,24 +1,16 @@
 import axios from "axios";
-import { useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
 
-import { useState, useEffect } from "react";
+import { useState} from "react";
 
 import DeleteForeverIcon from "@material-ui/icons/DeleteForever";
 import FlagIcon from "@material-ui/icons/Flag";
 import FlagOutlinedIcon from "@material-ui/icons/FlagOutlined";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
 import TableCell from "@material-ui/core/TableCell";
-import TableContainer from "@material-ui/core/TableContainer";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
 
-function AdminOnlyItem({ feedback, value, pastFeedbackResults }) {
+
+function AdminOnlyItem({ feedback, pastFeedbackResults }) {
   const [flagged, setFlagged] = useState(feedback.flagged);
-  //   const currentFlag = setFlagged(feedback.flagged);
-  // console.log(feedback.flagged);
+
   // Need to handle the flipped useState
   const handleFlip = (feedback) => {
     console.log("clicked handleFlip");
@@ -72,7 +64,7 @@ function AdminOnlyItem({ feedback, value, pastFeedbackResults }) {
   };
 
   return (
-    <TableRow value={value}>
+    <>
       <TableCell>
         {!flagged ? (
           <FlagOutlinedIcon onClick={() => handleFlip(feedback)} />
@@ -87,7 +79,7 @@ function AdminOnlyItem({ feedback, value, pastFeedbackResults }) {
       <TableCell>
         <DeleteForeverIcon onClick={() => handleDelete(feedback)} />
       </TableCell>
-    </TableRow>
+    </>
   );
 }
 

@@ -33,7 +33,6 @@ function Feeling() {
   const handleChange = (event) => {
     setFeelingInput(event.target.value);
   };
-  console.log(feelingInput);
 
   const handleSubmit = (event) => {
     event.preventDefault();
