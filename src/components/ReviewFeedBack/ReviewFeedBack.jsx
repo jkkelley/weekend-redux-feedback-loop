@@ -48,6 +48,12 @@ function ReviewFeedBack() {
         console.log(`Looks like we have a server Error: ${error}`);
       });
   };
+
+  const handleBack = (event) => {
+    event.preventDefault();
+    console.log("clicked handleBack")
+    history.push("/comments")
+  };
   console.log(feedBackForm[0]);
   return (
     <>
@@ -78,6 +84,15 @@ function ReviewFeedBack() {
       >
         {" "}
         Confirm
+      </Button>
+      <Button
+        className={classes.button}
+        color="primary"
+        onClick={handleBack}
+        variant="contained"
+      >
+        {" "}
+        Go back
       </Button>
     </>
   );
