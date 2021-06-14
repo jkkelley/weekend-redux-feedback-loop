@@ -32,7 +32,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   // Bring me all of the Feedback results from DB
   pool
-    .query(`SELECT * FROM "feedback" ORDER BY "id" ASC;`)
+    .query(`SELECT * FROM "feedback" ORDER BY "id" DESC;`)
     .then((result) => {
       // Send back all the rows
       res.send(result.rows);
